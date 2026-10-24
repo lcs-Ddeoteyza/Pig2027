@@ -39,7 +39,9 @@ struct PigView: View {
     @State var playerTwoScore: Int = 0
     // Becomes true when somebody wins.
     @State var gameIsOver: Bool = false
-
+    //lives player 1
+    @State var livesp1: Int = 5
+    @State var livesp2: Int = 5
     // The points collected so far on this turn.
     // They are not safe until the player clicks Hold.
     @State var turnTotal: Int = 0
@@ -77,6 +79,9 @@ struct PigView: View {
                     Text("\(playerOneScore)")
                         .font(.system(size: 48, weight: .bold))
                         .monospacedDigit()
+                    Text("\(livesp1) lives left")
+                        .font(.system(size: 33, weight: .bold))
+                        .monospacedDigit()
                 }
                 .frame(maxWidth: .infinity)
                 .padding()
@@ -88,6 +93,9 @@ struct PigView: View {
                         .font(.headline)
                     Text("\(playerTwoScore)")
                         .font(.system(size: 48, weight: .bold))
+                        .monospacedDigit()
+                    Text("\(livesp2) lives left")
+                        .font(.system(size: 33, weight: .bold))
                         .monospacedDigit()
                 }
                 .frame(maxWidth: .infinity)
@@ -181,8 +189,16 @@ struct PigView: View {
             // TRY: Change this message.
             message = "You rolled a \(roll). Roll again, or hold?"
         }
+        
+        if roll == 1 && currentPlayer == 2 {
+            livesp1 = livesp1 - 1
+        } else if roll == 1 && currentPlayer == 1 {
+            livesp2 = livesp2 - 1
+        }
     }
 
+    
+    
     // Banks the turn total into the current player's score, then ends the turn.
     func hold() {
         if currentPlayer == 1 {
@@ -220,6 +236,8 @@ struct PigView: View {
     // Sets everything back to the way it was at the start.
     func startNewGame() {
         playerOneScore = 0
+        livesp1 = 5
+        livesp2 = 5
         playerTwoScore = 0
         turnTotal = 0
         gameIsOver = false
