@@ -40,8 +40,8 @@ struct PigView: View {
     // Becomes true when somebody wins.
     @State var gameIsOver: Bool = false
     //lives player 1
-    @State var livesp1: Int = 5
-    @State var livesp2: Int = 5
+    @State var livesp1: Int = 1
+    @State var livesp2: Int = 1
     // The points collected so far on this turn.
     // They are not safe until the player clicks Hold.
     @State var turnTotal: Int = 0
@@ -131,8 +131,8 @@ struct PigView: View {
                 .monospacedDigit()
 
             Text(message)
-                .font(.headline)
-                .foregroundStyle(Color.secondary)
+                .font(.title)
+                .foregroundStyle(Color.primary)
                 .multilineTextAlignment(.center)
                 .frame(minHeight: 44)
 
@@ -194,6 +194,16 @@ struct PigView: View {
             livesp1 = livesp1 - 1
         } else if roll == 1 && currentPlayer == 1 {
             livesp2 = livesp2 - 1
+        }
+        let playerOneLost = livesp1 == 0
+        let playerTwoLost = livesp2 == 0
+        
+        if playerOneLost {
+            message = "Player 2 wins! Click New Game to play again. Better luck next time player 1"
+            dieSymbol = "trophy.fill"
+        } else if playerTwoLost {
+            message = "Player 1 wins! Click New Game to play again. Better luck next time player 2"
+            dieSymbol = "trophy.fill"
         }
     }
 
