@@ -22,6 +22,13 @@ Hold
 - I added a new variable called holdShow (shows you hold will add) and it is an integer that resets to 0 each time you click new game and each time you switch player.
 - I added an if, else so it checks what player is rolling the dice and the if, else was added in the two variables so it uploads the value each time you roll and swich player.
 
+## Testing
+| Test | Chosen Input | Should happen | Did happen |
+| --- | --- | --- | --- |
+| roll is just 1 or 6 | click 2 times roll and then hold 2 times | players should probably get no points or maybe 12 |  player 1 got 12 points player 2 got 0 points |
+| lives is equal to 1 | play until someaone rolls a 1 | the player that did not roll the 1 should win|  the player that rolled 1 lost the other one won |
+| winning score is 50 | Play until a player reaches 50 points or more | the player that reaches 50 points should win | the player that reached 50 won |
+
 ## Credits
  
 - The starting game was written by Mr. Gordon.
