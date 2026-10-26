@@ -13,7 +13,6 @@
 //  The first player to bank 100 points or more wins.
 //  Nobody can win! The scores just keep going up.
 //  In the real game, the first player to reach 100 points wins.
-//
 
 import SwiftUI
 
@@ -57,6 +56,8 @@ struct PigView: View {
 
     // A message that tells the players what just happened.
     @State var message: String = "Player 1 goes first. Click Roll to start."
+    //The score that you will get if you hold
+    @State var holdShow: Int = 0
 
     // MARK: - Computed properties
 
@@ -146,7 +147,7 @@ struct PigView: View {
                 }
                 .buttonStyle(.borderedProminent)
 
-                Button("Hold", systemImage: "hand.raised.fill") {
+                Button("Hold now and you will have \(holdShow)", systemImage: "hand.raised.fill") {
                     hold()
                 }
                 .buttonStyle(.bordered)
@@ -205,6 +206,12 @@ struct PigView: View {
             message = "Player 1 wins! Click New Game to play again. Play safer next time player 2"
             dieSymbol = "trophy.fill"
         }
+        if currentPlayer == 1 {
+            holdShow = playerOneScore + turnTotal
+        }
+        else {
+            holdShow = playerTwoScore + turnTotal
+        }
     }
 
     
@@ -213,8 +220,10 @@ struct PigView: View {
     func hold() {
         if currentPlayer == 1 {
             playerOneScore += turnTotal
+            holdShow = playerOneScore
         } else {
             playerTwoScore += turnTotal
+            holdShow = playerTwoScore
         }
  
         // Has either player reached the winning score?
@@ -236,10 +245,18 @@ struct PigView: View {
     func switchPlayer() {
         if currentPlayer == 1 {
             currentPlayer = 2
+            holdShow = 0
             turnColor = playerTwoColor
         } else {
             currentPlayer = 1
             turnColor = playerOneColor
+            holdShow = 0
+        }
+        if currentPlayer == 1 {
+            holdShow = playerOneScore + turnTotal
+        }
+        else {
+            holdShow = playerTwoScore + turnTotal
         }
     }
 
@@ -250,6 +267,7 @@ struct PigView: View {
         livesPlayer2 = 5
         playerTwoScore = 0
         turnTotal = 0
+        holdShow = 0
         gameIsOver = false
         currentPlayer = 1
         turnColor = playerOneColor
