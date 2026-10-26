@@ -40,8 +40,8 @@ struct PigView: View {
     // Becomes true when somebody wins.
     @State var gameIsOver: Bool = false
     //lives player 1
-    @State var livesp1: Int = 5
-    @State var livesp2: Int = 5
+    @State var livesPlayer1: Int = 5
+    @State var livesPlayer2: Int = 5
     // The points collected so far on this turn.
     // They are not safe until the player clicks Hold.
     @State var turnTotal: Int = 0
@@ -79,7 +79,7 @@ struct PigView: View {
                     Text("\(playerOneScore)")
                         .font(.system(size: 48, weight: .bold))
                         .monospacedDigit()
-                    Text("\(livesp1) lives left")
+                    Text("\(livesPlayer1) lives left")
                         .font(.system(size: 33, weight: .bold))
                         .monospacedDigit()
                 }
@@ -94,7 +94,7 @@ struct PigView: View {
                     Text("\(playerTwoScore)")
                         .font(.system(size: 48, weight: .bold))
                         .monospacedDigit()
-                    Text("\(livesp2) lives left")
+                    Text("\(livesPlayer2) lives left")
                         .font(.system(size: 33, weight: .bold))
                         .monospacedDigit()
                 }
@@ -191,12 +191,12 @@ struct PigView: View {
         }
         
         if roll == 1 && currentPlayer == 2 {
-            livesp1 = livesp1 - 1
+            livesPlayer1 = livesPlayer1 - 1
         } else if roll == 1 && currentPlayer == 1 {
-            livesp2 = livesp2 - 1
+            livesPlayer2 = livesPlayer2 - 1
         }
-        let playerOneLost = livesp1 == 0
-        let playerTwoLost = livesp2 == 0
+        let playerOneLost = livesPlayer1 == 0
+        let playerTwoLost = livesPlayer2 == 0
         
         if playerOneLost {
             message = "Player 2 wins! Click New Game to play again. Play safer next time player 1"
@@ -246,8 +246,8 @@ struct PigView: View {
     // Sets everything back to the way it was at the start.
     func startNewGame() {
         playerOneScore = 0
-        livesp1 = 5
-        livesp2 = 5
+        livesPlayer1 = 5
+        livesPlayer2 = 5
         playerTwoScore = 0
         turnTotal = 0
         gameIsOver = false
