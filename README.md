@@ -20,6 +20,7 @@ Code added by gemini:   else if losesTurn(lastRoll: lastRoll, currentRoll: roll)
             lastRoll = 
             switchPlaye()
         }
+- Also it says your last roll next to your turn total.
 ## How it works
 Lives
 - I added two variables for the lives of each player, they reset each time you click new game.
@@ -31,6 +32,7 @@ Hold
 Two sixes in a row
 -    Using the hint in the ideas part I created a new function that is bool so when its true it will be called back in rolldie and also added a var that embers your last roll
 - In rolldie I called back losesTurn if lastRoll and currentRoll are 6 and it resets the turn total and the lastRoll substracts 1 live and switches the player.
+- It says your last roll just by adding the text that says your last roll is and the variable lastRoll with a / and ().
 -
 
 ## Testing

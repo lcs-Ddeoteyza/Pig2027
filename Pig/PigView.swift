@@ -129,7 +129,7 @@ struct PigView: View {
                 .font(.system(size: 120))
                 .foregroundStyle(turnColor)
 
-            Text("Turn total: \(turnTotal)")
+            Text("Turn total: \(turnTotal) Your last roll is \(lastRoll )")
                 .font(.title2)
                 .bold()
                 .monospacedDigit()
