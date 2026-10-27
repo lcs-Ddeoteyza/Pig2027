@@ -11,8 +11,15 @@ You against another player that needs to be with you. You choose when to roll th
  
 - Added lives and each time you roll a 1 you lose 1 live, ran out of lives and game over.And a message when you lose for loss of lives
 - Also modified the text of the part that tells you the turn and what you rolled.
-- Now the text in the hold button tells you how much points you will get if youh hold
-
+- Now the text in the hold button tells you how much points you will get if you hold
+- Now if you roll two 6s in a row you lose your turn and turn total points and 1 live
+Code added by gemini:   else if losesTurn(lastRoll: lastRoll, currentRoll: roll) {
+ // Rolling two 6s in a row loses turn total and ends the turn.
+            message = "Two 6s in a row! Player \(currentPlayer) loses \(turnTotal) points."
+            turnTotal = 0
+            lastRoll = 
+            switchPlaye()
+        }
 ## How it works
 Lives
 - I added two variables for the lives of each player, they reset each time you click new game.
@@ -21,6 +28,10 @@ Lives
 Hold
 - I added a new variable called holdShow (shows you hold will add) and it is an integer that resets to 0 each time you click new game and each time you switch player.
 - I added an if, else so it checks what player is rolling the dice and the if, else was added in the two variables so it uploads the value each time you roll and swich player.
+Two sixes in a row
+-    Using the hint in the ideas part I created a new function that is bool so when its true it will be called back in rolldie and also added a var that embers your last roll
+- In rolldie I called back losesTurn if lastRoll and currentRoll are 6 and it resets the turn total and the lastRoll substracts 1 live and switches the player.
+-
 
 ## Testing
 | Test | Chosen Input | Should happen | Did happen |
@@ -28,8 +39,13 @@ Hold
 | roll is just 1 or 6 | click 2 times roll and then hold 2 times | players should probably get no points or maybe 12 |  player 1 got 12 points player 2 got 0 points |
 | lives is equal to 1 | play until someaone rolls a 1 | the player that did not roll the 1 should win|  the player that rolled 1 lost the other one won |
 | winning score is 50 | Play until a player reaches 50 points or more | the player that reaches 50 points should win | the player that reached 50 won |
+|roll is just 5 and 6|click 10 times roll  | It should switch the player because there was 2 6s in a row |  Switched the player|  
+
 
 ## Credits
  
 - The starting game was written by Mr. Gordon.
 - The rest was written by Diego de Oteyza
+- Gemini
+
+            

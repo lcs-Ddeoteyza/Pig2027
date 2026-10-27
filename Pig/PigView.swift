@@ -38,7 +38,7 @@ struct PigView: View {
     @State var playerTwoScore: Int = 0
     // Becomes true when somebody wins.
     @State var gameIsOver: Bool = false
-    //lives player 1
+    //lives of each player
     @State var livesPlayer1: Int = 5
     @State var livesPlayer2: Int = 5
     // The points collected so far on this turn.
@@ -50,7 +50,10 @@ struct PigView: View {
 
     // The colour of whoever's turn it is.
     @State var turnColor: Color = playerOneColor
-
+    
+    //Remenbers the last roll of the current player
+    @State var lastRoll: Int = 0
+  
     // The name of the SF Symbol that shows the die.
     @State var dieSymbol: String = "questionmark.square.fill"
 
@@ -183,12 +186,28 @@ struct PigView: View {
             // A 1 wipes out the turn total and ends the turn.
             message = "Oh no, a 1! Player \(currentPlayer) loses \(turnTotal) points."
             turnTotal = 0
+            lastRoll = 0
             switchPlayer()
-        } else {
+        }else if losesTurn(lastRoll: lastRoll, thisRoll: roll) {
+            // Rolling two 6s in a row loses turn total and ends the turn.
+            message = "Two 6 in a row! Player \(currentPlayer) loses \(turnTotal) points and his turn."
+            turnTotal = 0
+            lastRoll = 0
+            switchPlayer()
+            if currentPlayer == 1{
+            livesPlayer2 -= 1
+            }
+            else {
+                livesPlayer1 -= 1
+            }
+        }
+        
+        else {
             // Any other roll is added to the turn total.
             turnTotal += roll
             // TRY: Change this message.
             message = "You rolled a \(roll). Roll again, or hold?"
+            lastRoll = roll
         }
         
         if roll == 1 && currentPlayer == 2 {
@@ -237,6 +256,7 @@ struct PigView: View {
         } else {
             message = "Player \(currentPlayer) banked \(turnTotal) points."
             turnTotal = 0
+            lastRoll = 0
             switchPlayer()
         }
     }
@@ -268,6 +288,7 @@ struct PigView: View {
         playerTwoScore = 0
         turnTotal = 0
         holdShow = 0
+        lastRoll = 0
         gameIsOver = false
         currentPlayer = 1
         turnColor = playerOneColor
@@ -275,6 +296,16 @@ struct PigView: View {
         message = "Player 1 goes first. Click Roll to start."
     }
 }
+
+//my new function
+func losesTurn(lastRoll: Int, thisRoll: Int) -> Bool {
+    if lastRoll == 6 && thisRoll == 6 {
+        return true
+    } else {
+        return false
+    }
+}
+
 
 #Preview {
     PigView()
