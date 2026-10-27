@@ -46,6 +46,6 @@ Two sixes in a row
  
 - The starting game was written by Mr. Gordon.
 - The rest was written by Diego de Oteyza
-- Gemini
+- Gemini helped with a very shet segment of this programm
 
             
