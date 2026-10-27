@@ -297,7 +297,7 @@ struct PigView: View {
     }
 }
 
-//my new function
+//My new function that becomes true when you roll two 6s in a row and is called back in the function rollDie
 func losesTurn(lastRoll: Int, thisRoll: Int) -> Bool {
     if lastRoll == 6 && thisRoll == 6 {
         return true
