@@ -25,8 +25,7 @@ Code added by gemini:   else if losesTurn(lastRoll: lastRoll, currentRoll: roll)
 Lives
 - I added two variables for the lives of each player, they reset each time you click new game.
 - Then I added two if, else if and two booleans that check if the lives of the player run out  in the function rollDie. One if, else if checks if a 1 was rolled and whose turn it is so it can subtract 1 live to that player
-- The other if, else if is constantly checking if the booleans are true or false so when someone loses it sends a win message.
-Hold
+- There is an other else if that checks each time you roll the bools playerOneLost and playerTwoLost and if they are true (the lives of player lives equal to 0) the game is over.
 - I added a new variable called holdShow (shows you hold will add) and it is an integer that resets to 0 each time you click new game and each time you switch player.
 - I added an if, else so it checks what player is rolling the dice and the if, else was added in the two variables so it uploads the value each time you roll and swich player.
 Two sixes in a row
@@ -48,6 +47,6 @@ Two sixes in a row
  
 - The starting game was written by Mr. Gordon.
 - The rest was written by Diego de Oteyza
-- Gemini helped with a very shet segment of this programm
+- Gemini helped with the programm
 
             

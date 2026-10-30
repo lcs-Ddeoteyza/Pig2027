@@ -215,15 +215,19 @@ struct PigView: View {
         } else if roll == 1 && currentPlayer == 1 {
             livesPlayer2 = livesPlayer2 - 1
         }
-        let playerOneLost = livesPlayer1 == 0
-        let playerTwoLost = livesPlayer2 == 0
+        let playerOneLost: Bool = livesPlayer1 == 0
+        let playerTwoLost:Bool = livesPlayer2 == 0
         
         if playerOneLost {
             message = "Player 2 wins! Click New Game to play again. Play safer next time player 1"
             dieSymbol = "trophy.fill"
+            turnTotal = 0
+            gameIsOver = true
         } else if playerTwoLost {
             message = "Player 1 wins! Click New Game to play again. Play safer next time player 2"
             dieSymbol = "trophy.fill"
+            turnTotal = 0
+            gameIsOver = true
         }
         if currentPlayer == 1 {
             holdShow = playerOneScore + turnTotal
