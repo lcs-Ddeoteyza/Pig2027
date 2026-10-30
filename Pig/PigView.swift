@@ -283,8 +283,8 @@ struct PigView: View {
     // Sets everything back to the way it was at the start.
     func startNewGame() {
         playerOneScore = 0
-        livesPlayer1 = 5
-        livesPlayer2 = 5
+        livesPlayer1 = 10
+        livesPlayer2 = 10
         playerTwoScore = 0
         turnTotal = 0
         holdShow = 0
