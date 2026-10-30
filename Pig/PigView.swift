@@ -39,8 +39,8 @@ struct PigView: View {
     // Becomes true when somebody wins.
     @State var gameIsOver: Bool = false
     //lives of each player
-    @State var livesPlayer1: Int = 5
-    @State var livesPlayer2: Int = 5
+    @State var livesPlayer1: Int = 10
+    @State var livesPlayer2: Int = 10
     // The points collected so far on this turn.
     // They are not safe until the player clicks Hold.
     @State var turnTotal: Int = 0
