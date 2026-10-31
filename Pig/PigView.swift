@@ -175,7 +175,20 @@ struct PigView: View {
 
     // Rolls the die once for the current player.
     func rollDie() {
-
+        if gameIsOver{
+            playerOneScore = 0
+            livesPlayer1 = 10
+            livesPlayer2 = 10
+            playerTwoScore = 0
+            turnTotal = 0
+            holdShow = 0
+            lastRoll = 0
+            gameIsOver = false
+            currentPlayer = 1
+            turnColor = playerOneColor
+            dieSymbol = "questionmark.square.fill"
+            message = "Player 1 goes first. Click Roll to start."
+        }
         // Pick a random whole number from 1 to 6, just like a real die.
         let roll: Int = Int.random(in: 1...6)
 
@@ -241,6 +254,20 @@ struct PigView: View {
     
     // Banks the turn total into the current player's score, then ends the turn.
     func hold() {
+        if gameIsOver{
+            playerOneScore = 0
+            livesPlayer1 = 10
+            livesPlayer2 = 10
+            playerTwoScore = 0
+            turnTotal = 0
+            holdShow = 0
+            lastRoll = 0
+            gameIsOver = false
+            currentPlayer = 1
+            turnColor = playerOneColor
+            dieSymbol = "questionmark.square.fill"
+            message = "Player 1 goes first. Click Roll to start."
+        }
         if currentPlayer == 1 {
             playerOneScore += turnTotal
             holdShow = playerOneScore

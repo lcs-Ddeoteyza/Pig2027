@@ -21,6 +21,7 @@ Code added by gemini:   else if losesTurn(lastRoll: lastRoll, currentRoll: roll)
             switchPlaye()
         }
 - Also it says your last roll next to your turn total.
+- If you try to click hold or roll when the game is over it will start a new game.
 ## How it works
 Lives
 - I added two variables for the lives of each player, they reset each time you click new game.
@@ -32,6 +33,8 @@ Two sixes in a row
 -    Using the hint in the ideas part I created a new function that is bool so when its true it will be called back in rolldie and also added a var that embers your last roll
 - In rolldie I called back losesTurn if lastRoll and currentRoll are 6 and it resets the turn total and the lastRoll substracts 1 live and switches the player.
 - It says your last roll just by adding the text that says your last roll is and the variable lastRoll with a / and ().
+restarts the game when its over and you click hold or roll 
+- added an if in the functions roll and hold that checks if the boolean gameIsover is true each time you click or roll and if it is it restarts the game.
 -
 
 ## Testing
@@ -47,6 +50,9 @@ Two sixes in a row
 |  One live left (edge)| Lives start at 2 roll fixed at 1 and player one   cliks roll |  Player one should lose one live | player 1 lost one live |
 | Last live(edge) | Lives start at 1 roll fixed at 1 and player one   cliks roll |  Player 1 should lose | player 1 lost |
 |  after the game is over|As the last row, then click roll 1 more time  |  nothing should happen | thegame kept going with negative lives |
+| When a player runs out of lives |  play until a player runs out of lives and then click roll or hold. |  it should restart the game |  the game restarts |
+|  When a player wins |  play until a player wins and then click roll or hold.|  it should restart the game|   the game restarts|
+
 
 
  
