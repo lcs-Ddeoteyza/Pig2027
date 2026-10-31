@@ -37,10 +37,19 @@ Two sixes in a row
 ## Testing
 | Test | Chosen Input | Should happen | Did happen |
 | --- | --- | --- | --- |
-| roll is just 1 or 6 | click 2 times roll and then hold 2 times | players should probably get no points or maybe 12 |  player 1 got 12 points player 2 got 0 points |
-| lives is equal to 1 | play until someaone rolls a 1 | the player that did not roll the 1 should win|  the player that rolled 1 lost the other one won |
+| roll is just 1 or 6 | click 2 times roll and then hold 2 times | players should probably get no points or maybe 12 |  player 1 got 12 points player 2 got 0     points |
+| lives is equal to 1 | play until someone rolls a 1 | the player that did not roll the 1 should win| the player that rolled 1 lost the other one won |
 | winning score is 50 | Play until a player reaches 50 points or more | the player that reaches 50 points should win | the player that reached 50 won |
-|roll is just 5 and 6|click 10 times roll  | It should switch the player because there was 2 6s in a row |  Switched the player|  
+|roll is just 5 and 6|click 10 times roll  | the player should get 10 , 11 or no points | the player got no points |  
+ | Two 6s in row |Roll fixed at 6; player 1 clicks roll twice  |  Player loses 6 points his turn and one live |  the player lost his turn points and one live |
+|Two rolls the same, not 6  |Roll fixed at 5: Player  clicks roll twice and      then hold |  Player 1 should get 10 points | Player 1 got 10 points |
+| What hold shows | Roll fixed at 4: player 1 clicks roll three times and then holds |   player 1 should get 12 points | player 1 gets 12 points | 
+|  One live left (edge)| Lives start at 2 roll fixed at 1 and player one   cliks roll |  Player one should lose one live | player 1 lost one live |
+| Last live(edge) | Lives start at 1 roll fixed at 1 and player one   cliks roll |  Player 1 should lose | player 1 lost |
+|  after the game is over|As the last row, then click roll 1 more time  |  nothing should happen | thegame kept going with negative lives |
+
+
+ 
 
 
 ## Credits
